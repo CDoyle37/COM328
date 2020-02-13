@@ -22,12 +22,30 @@ void fillRandom(Array<int> & data, int range=100) {
 
 // test selection sort
 void testSelect() {
+	cout << "---Testing Selection Sort---" << endl;
 
+	Array<int> data = Array<int>(20);
+	fillRandom(data, 20);
+
+	cout << "Unsorted Data: " << data << endl;
+
+	selectionSort(data);
+
+	cout << "Sorted Data: " << data << endl << endl;
 }
 
 // test insertion sort
 void testInsert() {
+	cout << "---Testing Insertion Sort---" << endl;
 
+	Array<int> data = Array<int>(20);
+	fillRandom(data, 20);
+
+	cout << "Unsorted Data: " << data << endl;
+
+	insertionSort(data);
+
+	cout << "Sorted Data: " << data << endl << endl;
 }
 
 
@@ -37,7 +55,15 @@ int maxDiff(const Array<int> & data) {
 }
 // Compare performance of selection/insertion sort.
 void testBoth() {
+	// Create two random arrays
+	Array<int> insert = Array<int>(20);
+	Array<int> select = Array<int>(20);
+	fillRandom(insert, 20);
+	select = insert;
 
+	// Sort them
+	insertionSort(insert);
+	selectionSort(select);
 }
 
 // test string sorting
@@ -52,7 +78,9 @@ int main() {
 	srand((unsigned)time(NULL));
 
 	// call test methods here
-
+	for (int i = 0; i < 10; i++) {
+		testBoth();
+	}
 
 	// ---------------------------------------------------
 	cout << endl << "Press enter to quit";
